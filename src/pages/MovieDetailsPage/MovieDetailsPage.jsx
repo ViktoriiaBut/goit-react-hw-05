@@ -1,11 +1,14 @@
-import { NavLink, Outlet, useParams } from "react-router-dom";
+import { Link, NavLink, Outlet, useLocation, useParams } from "react-router-dom";
 import s from "./MovieDetailsPage.module.css";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { fetchTmdbById } from "../../services/api";
+
 
 const MovieDetailsPage = () => {
     const [movies, setMovies] = useState([]);
     const { moviesId } = useParams;
+    const location = useLocation();
+    const goBackRef = useRef(location.state ?? '/')
 
     useEffect(() => {
         const getData = async () => {
@@ -20,6 +23,7 @@ const MovieDetailsPage = () => {
     }, [moviesId])
     return (
         <>
+        <Link to={goBackRef.current} className={s.linkButton}>Go back</Link>
         <img src={`https://image.tmdb.org/t/p/w500${movies.poster_path} `}/>
         <div>
             <h2>{movies.title}</h2>
