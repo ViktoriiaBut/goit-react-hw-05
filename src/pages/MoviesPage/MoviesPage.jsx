@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import MovieSearch from "../../components/MovieSearch/MovieSearch";
 import MovieList from "../../components/MovieList/MovieList";
-import { fetchSerchMovies } from "../../services/api";
+import { fetchSearchMovies } from "../../services/api";
 
 const MoviesPage = () => {
     const [searchMovie, setSearchMovie] = useState([]);
@@ -13,7 +13,7 @@ const MoviesPage = () => {
     useEffect(() => {
         const getData = async () => {
             try {
-             const data = await fetchSerchMovies(query);
+             const data = await fetchSearchMovies(query);
              setSearchMovie(data);
             } catch (error){
                 console.log(error);
