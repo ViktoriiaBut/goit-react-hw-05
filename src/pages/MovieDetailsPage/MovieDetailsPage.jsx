@@ -23,23 +23,41 @@ const MovieDetailsPage = () => {
     }, [moviesId])
     return (
         <>
-        <Link to={goBackRef.current} className={s.linkButton}>Go back</Link>
-        <img src={`https://image.tmdb.org/t/p/w500${movies.poster_path} `}/>
-        <div>
-            <h2>{movies.title}</h2>
-            <p>{movies.view}</p>
-        </div>
-    <div>
-        <h2>MovieDetailsPage</h2>
-        <nav>
-
-            <NavLink to='cast' className={s.linkCR}></NavLink>
-            <NavLink to='reviews' className={s.linkCR}></NavLink>
-        </nav>
-        <Outlet />
-    </div>
+          <Link to={goBackRef.current}>
+            <button className={s.linkButton}>Go back</button>
+          </Link>
+          <div className={s.wrapperBox}>
+            <div className={s.flexWrapper}>
+              <img
+                className={s.imageContainer}
+                src={`https://image.tmdb.org/t/p/w500${movies.poster_path} `}
+                width={500}
+              />
+              <div className={s.aboutMovie}>
+                <h2>{movies.title}</h2>
+                <p>{movies.overview}</p>
+                <h3>TMBD {movies.vote_average}</h3>
+              </div>
+            </div>
+            <div>
+              <hr />
+              <p>Additional information</p>
+              <nav>
+                <NavLink to="moviecast" className={s.linkReview}>
+                  Cast{" "}
+                </NavLink>
+                <NavLink to="moviereviews" className={s.linkReview}>
+                  Reviews{" "}
+                </NavLink>
+              </nav>
+              <hr />
+              <Outlet />
+            </div>
+          </div>
+        </>
+      );
+    };
     
-    </>
-)}
-
 export default MovieDetailsPage;
+
+

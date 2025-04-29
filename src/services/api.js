@@ -27,17 +27,17 @@ export const fetchTmdb = async (signal) => {
   };
 
 
-export const fetchTmdbById = async (movieId) => {
-    return await fetchData(`${BASE_URL}/movie/${movieId}?language=en-US`);
+export const fetchTmdbById = async (moviesId) => {
+    return await fetchData(`${BASE_URL}/movie/${moviesId}?language=en-US`);
 };
 
-export const fetchCastById = async (movieId) => {
-    return await fetchData(`${BASE_URL}/movie/${movieId}/credits?language=en-US`)
+export const fetchCastById = async (moviesId) => {
+    return await fetchData(`${BASE_URL}/movie/${moviesId}/credits?language=en-US`)
       .then(data => data.cast);
 };
 
-export const fetchReviewsById = async (movieId) => {
-    return await fetchData(`${BASE_URL}/movie/${movieId}/reviews?language=en-US&page=1`)
+export const fetchReviewsById = async (moviesId) => {
+    return await fetchData(`${BASE_URL}/movie/${moviesId}/reviews?language=en-US&page=1`)
       .then(data => data.results);
 };
 
