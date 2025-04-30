@@ -7,33 +7,35 @@ import { fetchSearchMovies } from "../../services/api";
 const MoviesPage = () => {
     const [searchMovie, setSearchMovie] = useState([]);
     const [searchParams, setSearchParams] = useSearchParams();
-
+  
     const query = searchParams.get('query');
-
+  
     useEffect(() => {
-        const getData = async () => {
-            try {
-             const data = await fetchSearchMovies(query);
-             setSearchMovie(data);
-            } catch (error){
-                console.log(error);
-            }
-        };
-        getData();
+      if (!query) return;
+  
+      const getData = async () => {
+        try {
+          const data = await fetchSearchMovies(query);
+          setSearchMovie(data);
+        } catch (error) {
+          console.log(error);
+        }
+      };
+      getData();
     }, [query]);
-
+  
     const handleChangeQuery = (newValue) => {
-        searchParams.set("query", newValue) ?? '';
-        setSearchParams(newValue);
-    }
-        
+      setSearchParams({ query: newValue });
+    };
+  
     return (
-    <div>
+      <div>
         <h2>MoviesPage</h2>
-        <MovieSearch handleChangeQuery={handleChangeQuery}/>
-        <MovieList data ={searchMovie} />
-    </div>
-    )
-}
+        <MovieSearch handleChangeQuery={handleChangeQuery} />
+        <MovieList trendMovie={searchMovie} />
+      </div>
+    );
+  };
 
 export default MoviesPage;
+

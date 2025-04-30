@@ -1,0 +1,22 @@
+.wrapperBox {
+    padding: 10px;
+  }
+  
+  .imageContainer {
+    overflow: hidden;
+    border-radius: 1px;
+  }
+  .flexWrapper {
+    display: flex;
+    gap: 20px;
+  }
+  .aboutMovie {
+    gap: 50px;
+  }
+  .linkButton {
+    margin: 5px;
+    border-radius: 5px;
+  }
+  .linkReview {
+    text-decoration: none;
+  }
