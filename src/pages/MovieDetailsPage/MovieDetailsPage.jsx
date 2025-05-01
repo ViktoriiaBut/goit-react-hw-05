@@ -47,10 +47,10 @@ const MovieDetailsPage = () => {
             <hr />
             <p>Additional information</p>
             <nav>
-              <NavLink to="moviecast" className={s.linkReview}>
+              <NavLink to="cast" className={s.linkReview}>
                 Cast
               </NavLink>
-              <NavLink to="moviereviews" className={s.linkReview}>
+              <NavLink to="reviews" className={s.linkReview}>
                 Reviews
               </NavLink>
             </nav>
@@ -64,3 +64,5 @@ const MovieDetailsPage = () => {
 };
 
 export default MovieDetailsPage;
+
+

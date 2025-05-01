@@ -3,20 +3,20 @@ import { Link, useParams } from "react-router-dom";
 import { fetchReviewsById } from "../../services/api";
 
  const MovieReviews = () => {
-    const { moviesId } = useParams();
+    const { movieId } = useParams();
     const [reviews, setRevies] = useState([]);
 
     useEffect(() => {
         const getData = async () => {
             try {
-            const data = await fetchReviewsById(moviesId);
+            const data = await fetchReviewsById(movieId);
             setRevies(data);
             } catch (error) {
                 console.log(error);
             }
         };
         getData();
-    }, [moviesId]);
+    }, [movieId]);
 
     return (
         <div>
